@@ -43,10 +43,18 @@ public abstract class Person {
 	public Date getDOB() {
 		return DOB;
 	}
-
-	public void setDOB(Date DOB) {
-		this.DOB = DOB;
+	
+	
+	@SuppressWarnings("deprecation")
+	public void setDOB(Date DOB) throws PersonException{		
+		
+		if(DOB.getYear() <= 1915)
+			throw new PersonException(this);
+		
+		else 
+			this.DOB = DOB;
 	}
+	
 
 	public void setAddress(String newAddress) {
 		address = newAddress;
@@ -57,6 +65,7 @@ public abstract class Person {
 	}
 
 	public void setPhone(String newPhone_number) {
+		
 		phone_number = newPhone_number;
 	}
 
